@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SaleSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="custName" />
+          </Key>
+          <Property Name="custName" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="custType" Type="nchar" MaxLength="100" />
+          <Property Name="saleWay" Type="nchar" MaxLength="100" />
+          <Property Name="custCon" Type="nchar" MaxLength="100" />
+          <Property Name="phoneNum" Type="nchar" MaxLength="100" />
+          <Property Name="custAddr" Type="nchar" MaxLength="100" />
+          <Property Name="machineType" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Machine">
+          <Key>
+            <PropertyRef Name="custName" />
+          </Key>
+          <Property Name="custName" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="typeNum" Type="nchar" MaxLength="100" />
+          <Property Name="fixDate" Type="nchar" MaxLength="100" />
+          <Property Name="salePrice" Type="nchar" MaxLength="100" />
+          <Property Name="changeDate" Type="nchar" MaxLength="100" />
+          <Property Name="LvXing1_Last" Type="nchar" MaxLength="100" />
+          <Property Name="LvXing2_Last" Type="nchar" MaxLength="100" />
+          <Property Name="LvXing3_Last" Type="nchar" MaxLength="100" />
+          <Property Name="LvWang1_Last" Type="nchar" MaxLength="100" />
+          <Property Name="LvWang2_Last" Type="nchar" MaxLength="100" />
+          <Property Name="LvWang3_Last" Type="nchar" MaxLength="100" />
+          <Property Name="LvWang4_Last" Type="nchar" MaxLength="100" />
+          <Property Name="MoreInfo" Type="nchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="FK__Machine__custNam__5CD6CB2B">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Machine" Type="Self.Machine" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="custName" />
+            </Principal>
+            <Dependent Role="Machine">
+              <PropertyRef Name="custName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SaleSystemModelStoreContainer">
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Machine" EntityType="Self.Machine" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Machine__custNam__5CD6CB2B" Association="Self.FK__Machine__custNam__5CD6CB2B">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Machine" EntitySet="Machine" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SaleSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="custName" />
+          </Key>
+          <Property Name="custName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="custType" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="saleWay" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="custCon" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="phoneNum" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="custAddr" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="machineType" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Machine" Relationship="Self.FK__Machine__custNam__5CD6CB2B" FromRole="Customer" ToRole="Machine" />
+        </EntityType>
+        <EntityType Name="Machine">
+          <Key>
+            <PropertyRef Name="custName" />
+          </Key>
+          <Property Name="custName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="typeNum" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="fixDate" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="salePrice" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="changeDate" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="LvXing1_Last" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="LvXing2_Last" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="LvXing3_Last" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="LvWang1_Last" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="LvWang2_Last" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="LvWang3_Last" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="LvWang4_Last" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Machine__custNam__5CD6CB2B" FromRole="Machine" ToRole="Customer" />
+          <Property Name="MoreInfo" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__Machine__custNam__5CD6CB2B">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Machine" Type="Self.Machine" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="custName" />
+            </Principal>
+            <Dependent Role="Machine">
+              <PropertyRef Name="custName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SaleSystemEntities0" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="Machine" EntityType="Self.Machine" />
+          <AssociationSet Name="FK__Machine__custNam__5CD6CB2B" Association="Self.FK__Machine__custNam__5CD6CB2B">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Machine" EntitySet="Machine" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SaleSystemModelStoreContainer" CdmEntityContainer="SaleSystemEntities0">
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="SaleSystemModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="custName" ColumnName="custName" />
+                <ScalarProperty Name="custType" ColumnName="custType" />
+                <ScalarProperty Name="saleWay" ColumnName="saleWay" />
+                <ScalarProperty Name="custCon" ColumnName="custCon" />
+                <ScalarProperty Name="phoneNum" ColumnName="phoneNum" />
+                <ScalarProperty Name="custAddr" ColumnName="custAddr" />
+                <ScalarProperty Name="machineType" ColumnName="machineType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Machine">
+            <EntityTypeMapping TypeName="SaleSystemModel.Machine">
+              <MappingFragment StoreEntitySet="Machine">
+                <ScalarProperty Name="MoreInfo" ColumnName="MoreInfo" />
+                <ScalarProperty Name="custName" ColumnName="custName" />
+                <ScalarProperty Name="typeNum" ColumnName="typeNum" />
+                <ScalarProperty Name="fixDate" ColumnName="fixDate" />
+                <ScalarProperty Name="salePrice" ColumnName="salePrice" />
+                <ScalarProperty Name="changeDate" ColumnName="changeDate" />
+                <ScalarProperty Name="LvXing1_Last" ColumnName="LvXing1_Last" />
+                <ScalarProperty Name="LvXing2_Last" ColumnName="LvXing2_Last" />
+                <ScalarProperty Name="LvXing3_Last" ColumnName="LvXing3_Last" />
+                <ScalarProperty Name="LvWang1_Last" ColumnName="LvWang1_Last" />
+                <ScalarProperty Name="LvWang2_Last" ColumnName="LvWang2_Last" />
+                <ScalarProperty Name="LvWang3_Last" ColumnName="LvWang3_Last" />
+                <ScalarProperty Name="LvWang4_Last" ColumnName="LvWang4_Last" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
